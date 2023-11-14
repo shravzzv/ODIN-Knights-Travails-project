@@ -51,7 +51,7 @@ export class UDGraph {
   }
 
   hasEdge(src, dest) {
-    return this.adjList.get(src).includes(dest)
+    return this.adjList.has(src) ? this.adjList.get(src).includes(dest) : false
   }
 
   getNeighbors(vertex) {
@@ -59,6 +59,11 @@ export class UDGraph {
   }
 
   doBFS(startingVertex, fn = null) {
+    if (!this.adjList.has(startingVertex)) {
+      console.error('Invalid starting vertex')
+      return
+    }
+
     const visited = {}
     visited[startingVertex] = true
     const queue = []
@@ -95,14 +100,9 @@ export class UDGraph {
       }
     }
 
-    traverse(startingVertex, visited, this.adjList)
-  }
-
-  printGraph() {
-    for (const [vertex, adjacents] of this.adjList) {
-      const adjacentStr = adjacents.join(' ')
-      console.log(`${vertex} -> [ ${adjacentStr} ]`)
-    }
+    this.adjList.has(startingVertex)
+      ? traverse(startingVertex, visited, this.adjList)
+      : console.error('Invalid starting vertex')
   }
 
   print() {

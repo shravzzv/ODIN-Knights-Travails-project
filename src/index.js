@@ -11,3 +11,4 @@ graph.addVertexWithEdges('E', ['A'])
 graph.removeVertex('E')
 
 graph.print()
+graph.doDFS('Aa')
