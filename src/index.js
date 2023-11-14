@@ -1,7 +1,6 @@
-import { UDGraph } from './classes/graph'
-import { Game } from './classes/game'
+import { Graph } from './classes/graph'
 
-const gameBoard = new UDGraph()
+const gameBoard = new Graph()
 
 // add all vertices
 for (let i = 0; i < 8; i++) {
@@ -11,7 +10,7 @@ for (let i = 0; i < 8; i++) {
   }
 }
 
-const knightMoves = [
+const knightChoices = [
   [2, 1],
   [1, 2],
   [-1, 2],
@@ -24,7 +23,7 @@ const knightMoves = [
 
 // add all edges
 for (const key of gameBoard.adjList.keys()) {
-  for (const move of knightMoves) {
+  for (const move of knightChoices) {
     let destX = parseInt(key[0]) + parseInt(move[0])
     let destY = parseInt(key[2]) + parseInt(move[1])
 
@@ -36,3 +35,8 @@ for (const key of gameBoard.adjList.keys()) {
 }
 
 gameBoard.print()
+gameBoard.doBFS('5,5')
+
+gameBoard.knightMoves('1,1', '5,4')
+
+// todo: Implement knightMoves function

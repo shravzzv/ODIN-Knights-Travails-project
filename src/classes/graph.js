@@ -1,4 +1,4 @@
-export class UDGraph {
+export class Graph {
   constructor() {
     this.adjList = new Map()
   }
@@ -29,33 +29,6 @@ export class UDGraph {
     }
   }
 
-  addVertexWithEdges(vertex, edges) {
-    this.addVertex(vertex)
-
-    edges.forEach((edge) => {
-      this.addEdge(edge, vertex)
-    })
-  }
-
-  removeVertex(vertex) {
-    this.adjList.delete(vertex)
-
-    for (const [key, value] of this.adjList) {
-      this.adjList.set(
-        key,
-        value.filter((v) => v !== vertex)
-      )
-    }
-  }
-
-  hasEdge(src, dest) {
-    return this.adjList.has(src) ? this.adjList.get(src).includes(dest) : false
-  }
-
-  getNeighbors(vertex) {
-    return this.adjList.get(vertex)
-  }
-
   doBFS(startingVertex, fn = null) {
     if (!this.adjList.has(startingVertex)) {
       console.error('Invalid starting vertex')
@@ -82,28 +55,11 @@ export class UDGraph {
     }
   }
 
-  doDFS(startingVertex, fn = null) {
-    const visited = {}
-
-    function traverse(vertex, visited, list) {
-      visited[vertex] = true
-      fn ? fn(vertex) : console.log(vertex)
-
-      const adjacents = list.get(vertex)
-
-      for (let adjacent of adjacents) {
-        if (!visited[adjacent]) {
-          traverse(adjacent, visited, list)
-        }
-      }
-    }
-
-    this.adjList.has(startingVertex)
-      ? traverse(startingVertex, visited, this.adjList)
-      : console.error('Invalid starting vertex')
-  }
-
   print() {
     console.log(this.adjList)
+  }
+
+  knightMoves(start, end) {
+    console.log(start + ' ' + end)
   }
 }
