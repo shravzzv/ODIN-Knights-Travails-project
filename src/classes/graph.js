@@ -5,29 +5,27 @@ export class UDGraph {
 
   addVertex(vertex) {
     if (!this.adjList.has(vertex)) {
-      this.adjList.set(vertex, [])
-    } else {
-      console.error('Vertex already exists')
+      this.adjList.set(`${vertex}`, [])
     }
   }
 
   addEdge(src, dest) {
     if (!this.adjList.has(src) || !this.adjList.has(dest)) {
-      console.error('Invalid vertex')
+      // console.error('Invalid vertex')
       return
     }
 
     if (!this.adjList.get(src).includes(dest)) {
       this.adjList.get(src).push(dest)
     } else {
-      console.error('Edge already exists')
+      // console.error('Edge already exists')
     }
 
     // since the graph is undirected, add an edge from dest to src also
     if (!this.adjList.get(dest).includes(src)) {
       this.adjList.get(dest).push(src)
     } else {
-      console.error('Edge already exists')
+      // console.error('Edge already exists')
     }
   }
 
