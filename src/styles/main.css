@@ -33,11 +33,12 @@ body {
   margin: 1em 0;
   width: max-content;
   border-radius: 10px;
-  padding: 2em;
+  padding: 3em;
   background-color: burlywood;
   background-image: url('https://images.unsplash.com/photo-1546962339-5ff89552b8ed?q=80&w=1468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+  counter-reset: right-index;
 }
 
 .square {
@@ -45,9 +46,12 @@ body {
   width: var(--square-side);
   cursor: pointer;
   background-color: white;
+  color: white;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-family: 'Cinzel', serif;
+  font-weight: 800;
 }
 
 /* pattern credit: https://stackoverflow.com/questions/72671599/how-to-make-checkered-chess-board-pattern-with-css */
@@ -82,6 +86,7 @@ body {
 
 .square:nth-child(8n + 1) {
   border-left: 2px solid white;
+  position: relative;
 }
 
 .square:nth-child(-n + 8) {
@@ -90,6 +95,53 @@ body {
 
 .square:nth-last-child(-n + 8) {
   border-bottom: 2px solid white;
+  position: relative;
+}
+
+.square:nth-child(8n + 1):not(.square:nth-child(57)):after {
+  position: absolute;
+  right: 65px;
+}
+
+.square:nth-child(1)::after {
+  content: '7';
+}
+.square:nth-child(9)::after {
+  content: '6';
+}
+.square:nth-child(17)::after {
+  content: '5';
+}
+.square:nth-child(25)::after {
+  content: '4';
+}
+.square:nth-child(33)::after {
+  content: '3';
+}
+.square:nth-child(41)::after {
+  content: '2';
+}
+.square:nth-child(49)::after {
+  content: '1';
+}
+
+.square:nth-last-child(-n + 8):not(.square:nth-child(57)):after {
+  counter-increment: right-index;
+  content: counter(right-index);
+  position: absolute;
+  top: 65px;
+}
+
+.square:nth-child(57)::before {
+  content: '0';
+  position: absolute;
+  top: 65px;
+}
+
+.square:nth-child(57)::after {
+  content: '0';
+  position: absolute;
+  right: 65px;
 }
 
 .square:hover {
