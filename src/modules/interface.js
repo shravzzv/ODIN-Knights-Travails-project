@@ -1,4 +1,4 @@
-import { Game } from './game'
+import { PathFinder } from './pathFinder'
 
 // module responsible for modifying the UI
 export const Interface = (function () {
@@ -35,7 +35,7 @@ export const Interface = (function () {
   }
 
   const highlightPath = () => {
-    Game.knightMoves(_knightIndex, _starIndex)
+    PathFinder.knightMoves(_knightIndex, _starIndex)
       .slice(1, -1)
       .forEach((index) => {
         document.querySelector(

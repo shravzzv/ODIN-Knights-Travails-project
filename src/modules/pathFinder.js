@@ -1,5 +1,5 @@
 // module responsible for finding the shortest path between a knight and a destination
-export const Game = (function () {
+export const PathFinder = (function () {
   const _adjList = new Map()
 
   const _knightChoices = [
@@ -49,42 +49,43 @@ export const Game = (function () {
     }
   }
 
-  return {
-    print: () => console.log(_adjList),
-    knightMoves: (start, end, graph = _adjList) => {
-      // return the shortest path between start and end vertices using bfs
+  const knightMoves = (start, end, graph = _adjList) => {
+    // return the shortest path between start and end vertices using bfs
 
-      start = start.join(',')
-      end = end.join(',')
-      if (!graph.has(start) || !graph.has(end)) return 'Invalid start or end'
+    start = start.join(',')
+    end = end.join(',')
+    if (!graph.has(start) || !graph.has(end)) return 'Invalid start or end'
 
-      const queue = [[start]]
-      const visited = new Set()
+    const queue = [[start]]
+    const visited = new Set()
 
-      while (queue.length) {
-        const path = queue.shift()
-        const vertex = path[path.length - 1]
+    while (queue.length) {
+      const path = queue.shift()
+      const vertex = path[path.length - 1]
 
-        if (!visited.has(vertex)) {
-          visited.add(vertex)
+      if (!visited.has(vertex)) {
+        visited.add(vertex)
 
-          if (vertex === end) {
-            // console.log(
-            //   `You made it in ${path.length - 1} moves! Here's your path:`
-            // )
-            // console.log(path.map((coord) => coord.split(',').map(Number)))
+        if (vertex === end) {
+          // console.log(
+          //   `You made it in ${path.length - 1} moves! Here's your path:`
+          // )
+          // console.log(path.map((coord) => coord.split(',').map(Number)))
 
-            return path.map((coord) => coord.split(',').map(Number))
-          }
+          return path.map((coord) => coord.split(',').map(Number))
+        }
 
-          for (const neighbor of graph.get(vertex)) {
-            const newPath = [...path, neighbor]
-            queue.push(newPath)
-          }
+        for (const neighbor of graph.get(vertex)) {
+          const newPath = [...path, neighbor]
+          queue.push(newPath)
         }
       }
+    }
 
-      return null // no path found
-    },
+    return null // no path found
+  }
+
+  return {
+    knightMoves,
   }
 })()
