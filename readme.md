@@ -1,41 +1,37 @@
 # Knights Travails
 
-![Project screenshot](https://)
-[Project demo](https://)
-
 ## Description
 
-Briefly describe your project here. What does it do? Why is it useful?
-[Project Source](https://www.theodinproject.com/lessons/javascript-knights-travails)
+Knight's Travails is an interactive web application that demonstrates the ability of a knight on a chessboard to move from one square to any other square, given enough steps. This project serves as an implementation of finding the shortest path between a knight and its destination using a **breadth-first search algorithm**. Take a peek at [`pathfinder.js`](src/modules/pathFinder.js) file.
+
+This project was completed as a part of The Odin Project. Here's the [project source](https://www.theodinproject.com/lessons/javascript-knights-travails).
+
+[Look at the project demo here.](https://odin-knights-travails-project.vercel.app/)
 
 ## Features
 
-- Clearly list the key features of your project.
-- Be concise and informative.
+- Interactive chessboard allowing users to move a knight and visualize the shortest path to a destination.
+- Checkbox toggle to switch between moving the knight and the destination star.
+- Dynamic highlighting of the path traveled by the knight.
 
 ## Technologies Used
 
-- List the technologies and languages you used in your project, e.g., JavaScript, HTML, CSS, etc.
-
-<!-- Change the ?i=js,html,css to a list of your skills seprated by ','! You can find a full list of icons [here](https://github.com/tandpfun/skill-icons#icons-list). -->
-
-[![My Skills](https://skillicons.dev/icons?i=babel,bash,css,express,figma,git,github,html,js,jest,md,mongodb,netlify,nextjs,nodejs,postgres,postman,react,sass,ts,vercel,vscode,webpack)](https://skillicons.dev)
+[![List of technologies used in this project](https://skillicons.dev/icons?i=html,css,js,git,webpack,md,vercel,vscode)](https://skillicons.dev)
 
 ## Installation
 
 To install the project, follow these steps:
 
 ```bash
-git clone [repository_link]
-cd project-folder
-install project
+git clone https://github.com/shravzzv/ODIN-Knights-Travails-project
+cd ODIN-Knights-Travails-project
 ```
 
-Replace `[repository_link]` with the actual link to your repository.
+Open `index.html` in your browser or using live server.
 
 ## Usage
 
-Explain how to use your project, provide examples if possible.
+Explore the chessboard, click on squares to move the knight or set the destination star. Toggle between the knight and star movement using the provided toggle.
 
 ## How to Contribute
 
@@ -45,8 +41,8 @@ If you'd like to contribute, follow these steps:
 2. Clone your fork locally.
 
    ```bash
-   git clone [your_forked_repository_link]
-   cd project-folder
+   git clone https://github.com/shravzzv/ODIN-Knights-Travails-project
+   cd ODIN-Knights-Travails-project
    ```
 
 3. Create a new branch for your feature or bug fix.
@@ -69,7 +65,7 @@ If you'd like to contribute, follow these steps:
 
 Find a bug or want to request a new feature? Please let us know by submitting an issue.
 
-- [Issue Tracker](https://github.com/project/project/issues)
+- [Issue Tracker](https://github.com/shravzzv/ODIN-Knights-Travails-project/issues)
 
 ## License
 
