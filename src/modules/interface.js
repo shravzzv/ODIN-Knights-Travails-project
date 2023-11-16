@@ -4,7 +4,7 @@ import { PathFinder } from './pathFinder'
 export const Interface = (function () {
   let _knightIndex = [0, 0]
   let _starIndex = [7, 7]
-  let _isKnightMoving = false
+  let _hasKnightMoved = false
 
   const _placeKnightAt = (index) => {
     document.querySelector(
@@ -34,7 +34,7 @@ export const Interface = (function () {
     })
   }
 
-  const highlightPath = () => {
+  const _highlightPath = () => {
     PathFinder.knightMoves(_knightIndex, _starIndex)
       .slice(1, -1)
       .forEach((index) => {
@@ -44,34 +44,40 @@ export const Interface = (function () {
       })
   }
 
-  const initalize = () => {
-    _placeKnightAt(_knightIndex)
-    _placeStarAt(_starIndex)
-    highlightPath()
-  }
-
-  const updateKnight = (index) => {
+  const _updateKnight = (index) => {
     _knightIndex = index
     _clearAllSquaresExceptStar()
     _placeKnightAt(_knightIndex)
   }
 
-  const updateStar = (index) => {
+  const _updateStar = (index) => {
     _starIndex = index
     _clearAllSquaresExceptKnight()
     _placeStarAt(_starIndex)
   }
 
-  const hasKnightMoved = () => _isKnightMoving
+  const initalize = () => {
+    _placeKnightAt(_knightIndex)
+    _placeStarAt(_starIndex)
+    _highlightPath()
+  }
 
-  const togglePlayerChoice = () => (_isKnightMoving = !_isKnightMoving)
+  const togglePlayerChoice = () => (_hasKnightMoved = !_hasKnightMoved)
+
+  const handleSquareClick = (e) => {
+    if (e.target.textContent === '🐴' || e.target.textContent === '⭐') return
+    const index = e.target.attributes['data-index'].value
+
+    _hasKnightMoved
+      ? _updateKnight(index.split(','))
+      : _updateStar(index.split(','))
+
+    _highlightPath()
+  }
 
   return {
     initalize,
-    hasKnightMoved,
-    updateKnight,
-    updateStar,
-    highlightPath,
     togglePlayerChoice,
+    handleSquareClick,
   }
 })()

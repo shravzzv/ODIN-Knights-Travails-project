@@ -12,21 +12,12 @@ root.appendChild(Info())
 root.appendChild(Board())
 root.appendChild(Controller())
 
-// event handlers
-const handleSquareClick = (e) => {
-  if (e.target.textContent === '🐴' || e.target.textContent === '⭐') return
-  const index = e.target.attributes['data-index'].value
-
-  Interface.hasKnightMoved()
-    ? Interface.updateKnight(index.split(','))
-    : Interface.updateStar(index.split(','))
-
-  Interface.highlightPath()
-}
-
+// event listeners
 document
   .querySelectorAll('.square')
-  .forEach((square) => square.addEventListener('click', handleSquareClick))
+  .forEach((square) =>
+    square.addEventListener('click', Interface.handleSquareClick)
+  )
 
 document
   .querySelector(`input[type='checkbox']`)

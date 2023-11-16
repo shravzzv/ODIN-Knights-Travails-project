@@ -10,6 +10,8 @@
 
 :root {
   --square-side: 50px;
+  --square-pseduo-content-position-top: 140%;
+  --square-pseduo-content-position-right: 140%;
 }
 
 body {
@@ -17,7 +19,7 @@ body {
   min-height: 100vh;
 }
 
-/* I have a special div with the id of 'root' in my html. */
+/* I have a div with the id of 'root' in my html. */
 #root {
   display: flex;
   flex-direction: column;
@@ -44,7 +46,7 @@ body {
   animation: fadeIn 600ms ease;
 }
 
-/* shadow credit: https://getcssscan.com/css-box-shadow-examples */
+/* box-shadow credit: https://getcssscan.com/css-box-shadow-examples */
 
 .square {
   height: var(--square-side);
@@ -69,7 +71,7 @@ body {
 .square:nth-child(n + 57):nth-child(-n + 64):nth-child(odd) {
   background: transparent;
 }
-/* pattern credit: https://stackoverflow.com/questions/72671599/how-to-make-checkered-chess-board-pattern-with-css */
+/* chess board pattern credit: https://stackoverflow.com/questions/72671599/how-to-make-checkered-chess-board-pattern-with-css */
 
 .square:nth-of-type(1) {
   border-top-left-radius: 10px;
@@ -104,7 +106,7 @@ body {
 
 .square:nth-child(8n + 1):not(.square:nth-child(57)):after {
   position: absolute;
-  right: 65px;
+  right: var(--square-pseduo-content-position-right);
 }
 
 .square:nth-child(1)::after {
@@ -133,19 +135,19 @@ body {
   counter-increment: right-index;
   content: counter(right-index);
   position: absolute;
-  top: 65px;
+  top: var(--square-pseduo-content-position-top);
 }
 
 .square:nth-child(57)::before {
   content: '0';
   position: absolute;
-  top: 65px;
+  top: var(--square-pseduo-content-position-top);
 }
 
 .square:nth-child(57)::after {
   content: '0';
   position: absolute;
-  right: 65px;
+  right: var(--square-pseduo-content-position-right);
 }
 
 .square:hover {
