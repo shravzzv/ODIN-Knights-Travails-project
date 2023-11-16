@@ -3,19 +3,19 @@ const Board = () => {
   element.className = 'board'
 
   const indices = []
-  for (let i = 0; i < 8; i++) {
+  for (let i = 7; i >= 0; i--) {
     for (let j = 0; j < 8; j++) {
-      // store an index as '0,0'
-      indices.push([i, j].join(','))
+      // store an index as '0,0' : x,y
+      indices.push([j, i].join(','))
     }
   }
 
-  let j = 0
+  let count = 0
 
   for (let i = 0; i < 64; i++) {
     let square = document.createElement('span')
     square.className = 'square'
-    square.setAttribute('data-index', indices[j++])
+    square.setAttribute('data-index', indices[count++])
     element.appendChild(square)
   }
 

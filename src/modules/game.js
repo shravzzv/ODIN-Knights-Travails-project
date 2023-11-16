@@ -68,10 +68,12 @@ export const Game = (function () {
           visited.add(vertex)
 
           if (vertex === end) {
-            console.log(
-              `You made it in ${path.length - 1} moves! Here's your path:`
-            )
-            console.log(path.map((coord) => coord.split(',').map(Number)))
+            // console.log(
+            //   `You made it in ${path.length - 1} moves! Here's your path:`
+            // )
+            // console.log(path.map((coord) => coord.split(',').map(Number)))
+
+            return path.map((coord) => coord.split(',').map(Number))
           }
 
           for (const neighbor of graph.get(vertex)) {
