@@ -1,3 +1,4 @@
+// module responsible for finding the shortest path between a knight and a destination
 export const Game = (function () {
   const _adjList = new Map()
 
