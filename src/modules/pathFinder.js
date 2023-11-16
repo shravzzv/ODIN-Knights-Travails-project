@@ -1,7 +1,9 @@
-// module responsible for finding the shortest path between a knight and a destination
+// module responsible for finding the shortest path between a knight and a destination using an undirected graph and breadth-first-search
 export const PathFinder = (function () {
+  // representing a graph using an adjacent list
   const _adjList = new Map()
 
+  // all possible choices for index 0,0
   const _knightChoices = [
     [2, 1],
     [1, 2],
@@ -19,9 +21,10 @@ export const PathFinder = (function () {
     }
   }
 
+  // adds 64 vertices to the adjacent list to represent each square on the chess board as 'x,y'
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
-      // convert arrays into strings before adding to the list
+      // convert arrays into strings before adding to the list since arrays are of reference type
       _addVertex([i, j].join(','))
     }
   }
@@ -37,6 +40,7 @@ export const PathFinder = (function () {
     }
   }
 
+  // for each vertex, adds an edge to all of its possible knight choices
   for (const key of _adjList.keys()) {
     // key is a string as '1,1'
     for (const move of _knightChoices) {
@@ -49,11 +53,12 @@ export const PathFinder = (function () {
     }
   }
 
+  // returns the shortest path between a start and an end vertex using bfs
   const knightMoves = (start, end, graph = _adjList) => {
-    // return the shortest path between start and end vertices using bfs
-
+    // expected start and end arguments of type Array; convert them into strings
     start = start.join(',')
     end = end.join(',')
+
     if (!graph.has(start) || !graph.has(end)) return 'Invalid start or end'
 
     const queue = [[start]]
@@ -67,12 +72,13 @@ export const PathFinder = (function () {
         visited.add(vertex)
 
         if (vertex === end) {
+          return path.map((coord) => coord.split(',').map(Number))
+
+          // * commented code below was the required project ouput; it was no longer useful since a UI was implemented
           // console.log(
           //   `You made it in ${path.length - 1} moves! Here's your path:`
           // )
           // console.log(path.map((coord) => coord.split(',').map(Number)))
-
-          return path.map((coord) => coord.split(',').map(Number))
         }
 
         for (const neighbor of graph.get(vertex)) {
