@@ -3,12 +3,12 @@ import './styles/main.css'
 import { Game } from './modules/game'
 
 import Board from './components/board'
-import Controller from './components/controller'
+import Info from './components/info'
 
 // appending DOM nodes
 
 const root = document.getElementById('root')
-root.appendChild(Controller())
+root.appendChild(Info())
 root.appendChild(Board())
 
 // variables & functions
