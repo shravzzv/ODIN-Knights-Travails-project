@@ -1,9 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-html {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
+}
+
+:root {
+  --square-side: 50px;
 }
 
 body {
   font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+}
+
+/* board */
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(8, var(--square-side));
+  margin: 1em 0;
+  width: max-content;
+  border-radius: 10px;
+  padding: 2em;
+  background-color: burlywood;
+  background-image: url('https://images.unsplash.com/photo-1546962339-5ff89552b8ed?q=80&w=1468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.square {
+  height: var(--square-side);
+  width: var(--square-side);
+  cursor: pointer;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* pattern credit: https://stackoverflow.com/questions/72671599/how-to-make-checkered-chess-board-pattern-with-css */
+
+.square:nth-child(n + 2):nth-child(-n + 8):nth-child(even),
+.square:nth-child(n + 9):nth-child(-n + 16):nth-child(odd),
+.square:nth-child(n + 17):nth-child(-n + 24):nth-child(even),
+.square:nth-child(n + 25):nth-child(-n + 32):nth-child(odd),
+.square:nth-child(n + 33):nth-child(-n + 40):nth-child(even),
+.square:nth-child(n + 41):nth-child(-n + 48):nth-child(odd),
+.square:nth-child(n + 49):nth-child(-n + 56):nth-child(even),
+.square:nth-child(n + 57):nth-child(-n + 64):nth-child(odd) {
+  background: transparent;
+}
+
+.square:nth-of-type(1) {
+  border-top-left-radius: 10px;
+}
+.square:nth-of-type(8) {
+  border-top-right-radius: 10px;
+}
+.square:nth-of-type(57) {
+  border-bottom-left-radius: 10px;
+}
+.square:nth-of-type(64) {
+  border-bottom-right-radius: 10px;
+}
+
+.square:nth-child(8n) {
+  border-right: 2px solid white;
+}
+
+.square:nth-child(8n + 1) {
+  border-left: 2px solid white;
+}
+
+.square:nth-child(-n + 8) {
+  border-top: 2px solid white;
+}
+
+.square:nth-last-child(-n + 8) {
+  border-bottom: 2px solid white;
+}
+
+.square:hover {
+  background-color: gold !important;
+}
+
+/* controller */
+
+.controller {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
 }
