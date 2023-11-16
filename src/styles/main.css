@@ -39,6 +39,7 @@ body {
   background-size: cover;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   counter-reset: right-index;
+  animation: fadeIn 600ms ease;
 }
 
 .square {
@@ -155,6 +156,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 300ms ease;
 }
 
 .title {
@@ -166,3 +168,61 @@ body {
 }
 
 /* controller */
+
+input[type='checkbox'] {
+  display: none;
+}
+
+.toggle {
+  border-radius: 50px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 3px 5px -1px,
+    rgba(0, 0, 0, 0.14) 0 6px 10px 0, rgba(0, 0, 0, 0.12) 0 1px 18px 0;
+  animation: fadeIn 450ms ease;
+  margin: 1em;
+}
+
+.content {
+  cursor: pointer;
+  width: 200px;
+  height: 40px;
+  border-radius: 50px;
+  transition: background-color 300ms ease;
+  position: relative;
+  border-radius: 50px;
+  background-color: burlywood;
+  background-image: url('https://images.unsplash.com/photo-1546962339-5ff89552b8ed?q=80&w=1468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+}
+
+.content::after {
+  content: 'Move ⭐';
+  width: 100px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform 300ms ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type='checkbox']:checked + .content::after {
+  content: 'Move 🐴';
+  transform: translateX(100px);
+}
+
+/* animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
