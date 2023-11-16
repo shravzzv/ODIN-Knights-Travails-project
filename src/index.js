@@ -25,7 +25,6 @@ const placeStar = (e) => {
   const index = e.target.attributes['data-index'].value
   e.target.textContent = '⭐'
   highlightPath(Game.knightMoves(knightIndex, index.split(',')))
-  console.log(index)
 }
 
 const clearAllSquares = () => {
@@ -51,7 +50,11 @@ const clearAllSquaresExceptStar = () => {
 }
 
 const highlightPath = (path) => {
-  console.log(path)
+  path.slice(1, -1).forEach((index) => {
+    document.querySelector(
+      `.square[data-index='${index.join(',')}']`
+    ).textContent = '💥'
+  })
 }
 
 placeKnightAt(knightIndex)
@@ -68,8 +71,3 @@ const handleSquareClick = (e) => {
 Array.from(document.querySelectorAll('.square')).forEach((square) =>
   square.addEventListener('click', handleSquareClick)
 )
-
-// todo: display the path traversed
-// ! data-index attribute isn't congruent with x,y pattern of Game module: The game module treats the -left square as [0,0] in x,y pattern. Whereas the UI treats the top-left square as [0,0] with y,x pattern
-
-Game.knightMoves([0, 0], [1, 0])
