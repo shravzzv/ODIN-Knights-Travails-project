@@ -1,3 +1,6 @@
+import Info from '../components/info'
+import Board from '../components/board'
+import Controller from '../components/controller'
 import { PathFinder } from './pathFinder'
 
 // module responsible for modifying the UI
@@ -5,6 +8,23 @@ export const Interface = (function () {
   let _knightIndex = [0, 0]
   let _starIndex = [7, 7]
   let _hasKnightMoved = false
+  const _root = document.getElementById('root')
+
+  const _appendComponents = () => {
+    _root.appendChild(Info())
+    _root.appendChild(Board())
+    _root.appendChild(Controller())
+  }
+
+  const _setEventListeners = () => {
+    document
+      .querySelectorAll('.square')
+      .forEach((square) => square.addEventListener('click', _handleSquareClick))
+
+    document
+      .querySelector(`input[type='checkbox']`)
+      .addEventListener('input', _togglePlayerChoice)
+  }
 
   const _placeKnightAt = (index) => {
     document.querySelector(
@@ -57,14 +77,16 @@ export const Interface = (function () {
   }
 
   const initalize = () => {
+    _appendComponents()
+    _setEventListeners()
     _placeKnightAt(_knightIndex)
     _placeStarAt(_starIndex)
     _highlightPath()
   }
 
-  const togglePlayerChoice = () => (_hasKnightMoved = !_hasKnightMoved)
+  const _togglePlayerChoice = () => (_hasKnightMoved = !_hasKnightMoved)
 
-  const handleSquareClick = (e) => {
+  const _handleSquareClick = (e) => {
     if (e.target.textContent === '🐴' || e.target.textContent === '⭐') return
     const index = e.target.attributes['data-index'].value
 
@@ -77,7 +99,5 @@ export const Interface = (function () {
 
   return {
     initalize,
-    togglePlayerChoice,
-    handleSquareClick,
   }
 })()
