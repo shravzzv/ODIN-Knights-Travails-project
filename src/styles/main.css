@@ -171,6 +171,12 @@ body {
   margin-bottom: 0;
 }
 
+.gitHubStar {
+  /* text-decoration: none; */
+  /* color: inherit; */
+  margin-bottom: 0.5em;
+}
+
 /* controller */
 
 input[type='checkbox'] {
