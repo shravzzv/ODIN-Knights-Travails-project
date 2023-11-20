@@ -9,23 +9,22 @@
 }
 
 :root {
-  --square-side: 50px;
+  --square-side: 60px;
   --square-pseduo-content-position-top: 140%;
   --square-pseduo-content-position-right: 140%;
 }
 
 body {
   font-family: 'Inter', sans-serif;
-  min-height: 100vh;
 }
 
 /* I have a div with the id of 'root' in my html. */
 #root {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 1em;
+  min-height: 100vh;
 }
 
 /* board */
@@ -33,10 +32,9 @@ body {
 .board {
   display: grid;
   grid-template-columns: repeat(8, var(--square-side));
-  margin: 1em 0;
-  width: max-content;
   border-radius: 10px;
   padding: 3em;
+  margin: 0 4em;
   background-color: burlywood;
   background-image: url('https://images.unsplash.com/photo-1546962339-5ff89552b8ed?q=80&w=1468&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
   background-size: cover;
@@ -162,6 +160,7 @@ body {
   align-items: center;
   justify-content: center;
   animation: fadeIn 300ms ease;
+  padding: 1em;
 }
 
 .title {

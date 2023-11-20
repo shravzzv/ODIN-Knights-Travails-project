@@ -1,3 +1,5 @@
+import Controller from './controller'
+
 const Info = () => {
   const element = document.createElement('div')
   element.className = 'info'
@@ -12,6 +14,7 @@ const Info = () => {
 
   element.appendChild(title)
   element.appendChild(subTitle)
+  element.appendChild(Controller())
   return element
 }
 

@@ -13,7 +13,7 @@ export const Interface = (function () {
   const _appendComponents = () => {
     _root.appendChild(Info())
     _root.appendChild(Board())
-    _root.appendChild(Controller())
+    // _root.appendChild(Controller())
   }
 
   const _setEventListeners = () => {
